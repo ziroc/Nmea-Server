@@ -1,0 +1,8 @@
+target/**
+.classpath
+.project
+.settings/**
+dependency-reduced-pom.xml
+bin/**
+/target/
+**/GamePositionGetter.java
