@@ -21,8 +21,8 @@ public class NmeaServer {
 
 	public static void main(String[] args) {
 		NmeaServer s = new NmeaServer(10101);
-		SailGameService gpg = new SailGameService();
-		s.setPositionGetter(gpg);
+		SimplePositionGetter sps = new SimplePositionGetter();
+		s.setPositionGetter(sps);
 		s.start();
 	}
 

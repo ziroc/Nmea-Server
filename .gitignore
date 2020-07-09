@@ -6,3 +6,5 @@ dependency-reduced-pom.xml
 bin/**
 /target/
 **/GamePositionGetter.java
+**/SailGame/**
+route.txt
