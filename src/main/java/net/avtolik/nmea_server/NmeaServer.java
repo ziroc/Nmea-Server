@@ -21,7 +21,7 @@ public class NmeaServer {
 
 	public static void main(String[] args) {
 		NmeaServer s = new NmeaServer(10101);
-		GamePositionGetter gpg = new GamePositionGetter();
+		SailGameService gpg = new SailGameService();
 		s.setPositionGetter(gpg);
 		s.start();
 	}
@@ -76,7 +76,7 @@ public class NmeaServer {
 
 				while(true) {
 					
-					String pos = positionGetter.get();
+					String pos = positionGetter.getPosition();
 					System.out.println("Got position: " + pos);
 					String nmea = NmeaUtils.generateNmeaSentence(pos);
 					System.out.println("sending: " + nmea);
