@@ -1,6 +1,6 @@
 package net.avtolik.nmea_server;
 
-public class SimplePositionGetter implements PositionGetter {
+public class SimplePositionProvider implements PositionProvider {
 
 	@Override
 	public String getPosition() {

@@ -1,6 +1,6 @@
 package net.avtolik.nmea_server;
 
-public interface PositionGetter {
+public interface PositionProvider {
 
 	public String getPosition();
 }

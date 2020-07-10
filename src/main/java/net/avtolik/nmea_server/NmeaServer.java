@@ -10,7 +10,7 @@ public class NmeaServer {
 	
 	static Charset charset = Charset.forName("ASCII");
 	
-	private PositionGetter positionGetter;
+	private PositionProvider positionProvider;
 	private int port = 10101;
 	private int seconds = 120;
 
@@ -21,8 +21,8 @@ public class NmeaServer {
 
 	public static void main(String[] args) {
 		NmeaServer s = new NmeaServer(10101);
-		SimplePositionGetter sps = new SimplePositionGetter();
-		s.setPositionGetter(sps);
+		SimplePositionProvider spp = new SimplePositionProvider();
+		s.setPositionProvider(spp);
 		s.start();
 	}
 
@@ -50,12 +50,12 @@ public class NmeaServer {
 		}
 	}
 
-	public PositionGetter getPos() {
-		return positionGetter;
+	public PositionProvider getPos() {
+		return positionProvider;
 	}
 
-	public void setPositionGetter(PositionGetter pos) {
-		this.positionGetter = pos;
+	public void setPositionProvider(PositionProvider pos) {
+		this.positionProvider = pos;
 	}
 
 	private  class ClientHandler extends Thread {
@@ -76,7 +76,7 @@ public class NmeaServer {
 
 				while(true) {
 					
-					String pos = positionGetter.getPosition();
+					String pos = positionProvider.getPosition();
 					System.out.println("Got position: " + pos);
 					String nmea = NmeaUtils.generateNmeaSentence(pos);
 					System.out.println("sending: " + nmea);
