@@ -78,7 +78,15 @@ public class NmeaServer {
 					
 					String pos = positionProvider.getPosition();
 					System.out.println("Got position: " + pos);
-					String nmea = NmeaUtils.generateNmeaSentence(pos);
+					String nmea;
+					
+					double speed = positionProvider.getSpeed();
+					double headingTrue = positionProvider.getHeadingTrue();
+					
+					if(speed <0 || headingTrue <0)
+						nmea = NmeaUtils.generateGGANmeaSentence(pos);
+					else 
+						nmea = NmeaUtils.generateRMCNmeaSentence(pos, speed, headingTrue);
 					System.out.println("sending: " + nmea);
 
 					outputStream.write( nmea.getBytes(charset));

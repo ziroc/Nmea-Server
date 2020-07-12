@@ -7,4 +7,14 @@ public class SimplePositionProvider implements PositionProvider {
 		return "34.566267, -14.456167";
 	}
 
+	@Override
+	public double getSpeed() {
+		return -1;
+	}
+
+	@Override
+	public double getHeadingTrue() {
+		return -1;
+	}
+
 }
