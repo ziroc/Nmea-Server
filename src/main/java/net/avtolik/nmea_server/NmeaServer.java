@@ -12,7 +12,7 @@ public class NmeaServer {
 	
 	private PositionProvider positionProvider;
 	private int port = 10101;
-	private int seconds = 120;
+	private int timeout = 120;
 
 
 	public NmeaServer(int port) {
@@ -20,10 +20,11 @@ public class NmeaServer {
 	}
 
 	public static void main(String[] args) {
-		NmeaServer s = new NmeaServer(10101);
+		NmeaServer server = new NmeaServer(10101);
 		SimplePositionProvider spp = new SimplePositionProvider();
-		s.setPositionProvider(spp);
-		s.start();
+		server.setPositionProvider(spp);
+		server.setTimeout(120);
+		server.start();
 	}
 
 
@@ -92,7 +93,7 @@ public class NmeaServer {
 					outputStream.write( nmea.getBytes(charset));
 					outputStream.flush();
 
-					Thread.sleep(seconds * 1000);
+					Thread.sleep(timeout * 1000);
 				}
 
 			} catch (SocketException se) {
@@ -123,15 +124,15 @@ public class NmeaServer {
 		this.port = port;
 	}
 
-	public int getSeconds() {
-		return seconds;
+	public int getTimeout() {
+		return timeout;
 	}
 
 	/**
-	 * @param seconds - the period between sending the data to the clients. Default is 120
+	 * @param timeout - the period between sending the data to the clients. Default is 120
 	 * 
 	 */
-	public void setSeconds(int seconds) {
-		this.seconds = seconds;
+	public void setTimeout(int seconds) {
+		this.timeout = seconds;
 	}
 }
