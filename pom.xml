@@ -4,7 +4,7 @@
 
   <groupId>net.avtolik</groupId>
   <artifactId>nmea-server</artifactId>
-  <version>0.1</version>
+  <version>0.2</version>
   <packaging>jar</packaging>
 
   <name>nmea-server</name>
@@ -15,7 +15,6 @@
   </properties>
   
   <build>
-		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
